@@ -46,7 +46,7 @@ final class ContentResources {
             InputStream is = byteSource.openBufferedStream();
             response = Response.ok(is);
             response.header("Content-Disposition", dispositionType + "; filename=\"" + fileName + "\"");
-            response.header("Content-Length", byteSource.sizeIfKnown().or(-1L));
+            response.header("Content-Length", byteSource.size());
             response.header("Content-Type", fileData.contentType());
         } catch (IOException e) {
             LOG.error("resizedImage.getByteSource().openBufferedStream() failed", e);

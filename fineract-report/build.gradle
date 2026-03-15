@@ -46,6 +46,21 @@ configurations {
     runtime
 }
 
+configure(project.fineractJavaProjects) {
+
+    repositories {
+        mavenCentral()
+        flatDir {
+            dirs "${rootDir}/libs"
+        }
+    }
+
+    dependencies {
+        implementation fileTree(dir: "${rootDir}/libs", include: ['*.jar'])
+    }
+}
+
+
 apply from: 'dependencies.gradle'
 
 // Configuration for the modernizer plugin
